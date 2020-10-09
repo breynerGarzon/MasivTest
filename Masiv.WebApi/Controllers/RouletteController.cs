@@ -4,53 +4,37 @@ using Microsoft.AspNetCore.Mvc;
 namespace Masiv.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller"))]
+    [Route("api/[controller")]
     public class RouletteController : ControllerBase
     {
         private readonly IRouletteBusinessServices RouletteServices;
         public RouletteController(IRouletteBusinessServices rouletteServices)
         {
-            this.rouletteServices = rouletteServices;
+            this.RouletteServices = rouletteServices;
         }
 
         [HttpPost("Create")]
         public IActionResult CreateRoulette()
         {
-            try
-            {
-                return Created(this.RouletteServices.CreateRoulette());
-            }
-            catch (System.Exception ex)
-            {
-                return this.Problem();
-            }
+            return Ok(this.RouletteServices.CreateRoulette());
         }
 
-
-        [HttpPost("Create")]
-        public IActionResult CreateRoulette()
+        [HttpPut("Open/{rouletteId:int}")]
+        public IActionResult OpenRoulette(int rouletteId)
         {
-            try
-            {
-                return Created(this.RouletteServices.CreateRoulette());
-            }
-            catch (System.Exception ex)
-            {
-                return this.Problem();
-            }
+            return Ok(this.RouletteServices.EnableRoulette(rouletteId));
         }
 
-        [HttpPost("Create")]
-        public IActionResult CreateRoulette()
+        [HttpPut("Close/{rouletteId:int}")]
+        public IActionResult CloseRoulette(int rouletteId)
         {
-            try
-            {
-                return Created(this.RouletteServices.CreateRoulette());
-            }
-            catch (System.Exception ex)
-            {
-                return this.Problem();
-            }
+            return Ok(this.RouletteServices.DisableRoulette(rouletteId));
+        }
+
+        [HttpGet("Roulettes")]
+        public IActionResult GetRoulettes()
+        {
+            return Ok(this.RouletteServices.GetRoulettes());
         }
     }
 }

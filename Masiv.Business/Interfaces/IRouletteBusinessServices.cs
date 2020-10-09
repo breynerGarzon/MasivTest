@@ -5,10 +5,9 @@ namespace Masiv.Business.Interfaces
 {
     public interface IRouletteBusinessServices
     {
-        int CreateRoulette();
-        string EnableRoulette(int rouletteId);
-        IEnumerable<ViewRouletteBets> DisableRoulette(int rouletteId);
-        string GetRoulettes();
-
+        ModelResponse<int> CreateRoulette();
+        ModelResponse<string> EnableRoulette(int rouletteId);
+        ModelResponse<ViewRouletteBets> DisableRoulette(int rouletteId);
+        ModelResponse<string> GetRoulettes();
     }
 }

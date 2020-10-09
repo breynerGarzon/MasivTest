@@ -15,6 +15,16 @@ namespace Masiv.Data.Services
             throw new System.NotImplementedException();
         }
 
+        public bool DisableRoulette(int rouletteId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool EnableRoulette(int rouletteId)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Roulette Find()
         {
             throw new System.NotImplementedException();
