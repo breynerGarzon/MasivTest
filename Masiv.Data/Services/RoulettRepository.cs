@@ -1,13 +1,31 @@
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using Dapper;
 using Masiv.Data.Interfaces;
 using Masiv.Model.Models;
+using Microsoft.Extensions.Options;
 
 namespace Masiv.Data.Services
 {
     public class RoulettRepository : IRouletteRepository
     {
+        private readonly AppSettings AppSettingsOptions;
+        public RoulettRepository(IOptions<AppSettings> _appSettingsOptions)
+        {
+            this.AppSettingsOptions = _appSettingsOptions.Value;
+        }
+
         public Roulette Create(Roulette entity)
         {
-            throw new System.NotImplementedException();
+            using (var connection = new SqlConnection(this.AppSettingsOptions.ConnectionString))
+            {
+                var orderDetails = connection.Query<Roulette>("Execute CreateRoulette");
+                entity.Id = orderDetails.First().Id;
+
+                return entity;
+            }
         }
 
         public Roulette Delete(Roulette entity)
@@ -15,19 +33,30 @@ namespace Masiv.Data.Services
             throw new System.NotImplementedException();
         }
 
-        public bool DisableRoulette(int rouletteId)
+        public string DisableRoulette(int rouletteId)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool EnableRoulette(int rouletteId)
+        public string EnableRoulette(int rouletteId)
         {
-            throw new System.NotImplementedException();
-        }
+            using (var connection = new SqlConnection(this.AppSettingsOptions.ConnectionString))
+            {
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@RouletteId", rouletteId);
+                string message = connection.Query<string>("Execute EnableRoulette", queryParameters, commandType: CommandType.StoredProcedure)
+                                                .ToList()
+                                                .First();
 
-        public Roulette Find()
+                return message;
+            }
+        }
+        public IEnumerable<Roulette> Find(QueryFilter filters)
         {
-            throw new System.NotImplementedException();
+            using (var connection = new SqlConnection(this.AppSettingsOptions.ConnectionString))
+            {
+                return connection.Query<Roulette>("Execute GetRoulettes").ToList();
+            }
         }
 
         public Roulette Update(Roulette entity)

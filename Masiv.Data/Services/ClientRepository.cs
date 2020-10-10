@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Masiv.Data.Interfaces;
 using Masiv.Model.Models;
 
@@ -15,7 +16,7 @@ namespace Masiv.Data.Services
             throw new System.NotImplementedException();
         }
 
-        public Client Find()
+        public IEnumerable<Client> Find(QueryFilter filters)
         {
             throw new System.NotImplementedException();
         }

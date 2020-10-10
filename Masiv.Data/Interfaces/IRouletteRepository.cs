@@ -4,8 +4,8 @@ namespace Masiv.Data.Interfaces
 {
     public interface IRouletteRepository : IRepositoryBase<Roulette>
     {
-        bool EnableRoulette(int rouletteId);
-        bool DisableRoulette(int rouletteId);
+        string EnableRoulette(int rouletteId);
+        string DisableRoulette(int rouletteId);
 
     }
 }

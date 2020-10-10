@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Net;
+using Masiv.Model.Models;
 using Masiv.Model.Views;
 
 namespace Masiv.Model.Util
@@ -12,7 +13,7 @@ namespace Masiv.Model.Util
         public static ModelResponse<ViewRouletteBets> DisableRouletteProcedureInternalError(string messageError) => new ModelResponse<ViewRouletteBets>() { StatusCode = HttpStatusCode.InternalServerError, Item = null, Data = null, Message = messageError };
         public static ModelResponse<string> EnableRouletteProcedureOk(string message) => new ModelResponse<string>() { StatusCode = HttpStatusCode.OK, Item = message, Data = null, Message = null };
         public static ModelResponse<string> EnableRouletteProcedureInternalError(string messageError) => new ModelResponse<string>() { StatusCode = HttpStatusCode.InternalServerError, Item = null, Data = null, Message = messageError };
-        public static ModelResponse<string> GetRoulettesProcedureOk(string message) => new ModelResponse<string>() { StatusCode = HttpStatusCode.OK, Item = message, Data = null, Message = null };
-        public static ModelResponse<string> GetRoulettesProcedureInternalError(string messageError) => new ModelResponse<string>() { StatusCode = HttpStatusCode.InternalServerError, Item = null, Data = null, Message = messageError };
+        public static ModelResponse<Roulette> GetRoulettesProcedureOk(IEnumerable<Roulette> roulettes) => new ModelResponse<Roulette>() { StatusCode = HttpStatusCode.OK, Item = null, Data = roulettes, Message = null };
+        public static ModelResponse<Roulette> GetRoulettesProcedureInternalError(string messageError) => new ModelResponse<Roulette>() { StatusCode = HttpStatusCode.InternalServerError, Item = null, Data = null, Message = messageError };
     }
 }

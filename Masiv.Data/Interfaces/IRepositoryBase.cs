@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Masiv.Model.Models;
+
 namespace Masiv.Data.Interfaces
 {
     public interface IRepositoryBase<T>
@@ -5,6 +8,6 @@ namespace Masiv.Data.Interfaces
         T Create(T entity);
         T Update(T entity);
         T Delete(T entity);
-        T Find();
+        IEnumerable<T> Find(QueryFilter filters);
     }
 }

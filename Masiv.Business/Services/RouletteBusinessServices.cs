@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Masiv.Business.Interfaces;
 using Masiv.Data.Interfaces;
+using Masiv.Model.Models;
 using Masiv.Model.Util;
 using Masiv.Model.Views;
 
@@ -17,7 +18,7 @@ namespace Masiv.Business.Services
         {
             try
             {
-                return RouletteResponse.CreationProcedureOk(this.DataServices.Create());
+                return RouletteResponse.CreationProcedureOk(this.DataServices.Create(new Roulette()).Id);
             }
             catch (System.Exception)
             {
@@ -29,7 +30,7 @@ namespace Masiv.Business.Services
         {
             try
             {
-                return RouletteResponse.DisableRouletteProcedureOk(this.DataServices.DiableRoulette(rouletteId));
+                return RouletteResponse.DisableRouletteProcedureOk(this.DataServices.DisableRoulette(rouletteId));
             }
             catch (System.Exception)
             {
@@ -49,15 +50,15 @@ namespace Masiv.Business.Services
             }
         }
 
-        public ModelResponse<string> GetRoulettes()
+        public ModelResponse<Roulette> GetRoulettes()
         {
             try
             {
-                return RouletteResponse.EnableRouletteProcedureOk(this.DataServices.Find());
+                return RouletteResponse.GetRoulettesProcedureOk(this.DataServices.Find(new QueryFilter()));
             }
             catch (System.Exception)
             {
-                return RouletteResponse.EnableRouletteProcedureInternalError("");
+                return RouletteResponse.GetRoulettesProcedureInternalError("");
             }
         }
     }

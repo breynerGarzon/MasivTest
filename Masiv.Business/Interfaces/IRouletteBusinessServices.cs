@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Masiv.Model.Models;
 using Masiv.Model.Views;
 
 namespace Masiv.Business.Interfaces
@@ -8,6 +9,6 @@ namespace Masiv.Business.Interfaces
         ModelResponse<int> CreateRoulette();
         ModelResponse<string> EnableRoulette(int rouletteId);
         ModelResponse<ViewRouletteBets> DisableRoulette(int rouletteId);
-        ModelResponse<string> GetRoulettes();
+        ModelResponse<Roulette> GetRoulettes();
     }
 }
