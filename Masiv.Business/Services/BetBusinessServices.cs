@@ -2,6 +2,7 @@ using Masiv.Business.Interfaces;
 using Masiv.Data.Interfaces;
 using Masiv.Model.Util;
 using Masiv.Model.Views;
+using Serilog;
 
 namespace Masiv.Business.Services
 {
@@ -20,9 +21,10 @@ namespace Masiv.Business.Services
                 newBet.ClientId = int.Parse(clientId);
                 return BetResponse.CreationProcedureOk(this.RepositoryBet.Create(newBet).Message);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return BetResponse.CreationProcedureInternalError("");
+                Log.Error(ex, "An error occurred when registering a bet, error:");
+                return BetResponse.CreationProcedureInternalError(Message.ERRORTOCREATEBET);
             }
         }
     }

@@ -1,0 +1,32 @@
+2020-10-12 16:30:01.730 -05:00 [INF] Starting web host
+2020-10-12 16:30:02.873 -05:00 [INF] Now listening on: https://localhost:5001
+2020-10-12 16:30:02.877 -05:00 [INF] Now listening on: http://localhost:5000
+2020-10-12 16:30:02.878 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-12 16:30:02.878 -05:00 [INF] Hosting environment: Development
+2020-10-12 16:30:02.878 -05:00 [INF] Content root path: F:\ProyectosPersonales\MasivTest\Masiv.WebApi
+2020-10-12 16:30:03.154 -05:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-12 16:30:03.191 -05:00 [INF] Request finished in 40.494ms 404 
+2020-10-12 16:30:18.643 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/bet/Create application/json 75
+2020-10-12 16:30:18.658 -05:00 [INF] Executing endpoint 'Masiv.WebApi.Controllers.BetController.CreateBet (Masiv.WebApi)'
+2020-10-12 16:30:18.723 -05:00 [INF] Route matched with {action = "CreateBet", controller = "Bet"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreateBet(System.String, Masiv.Model.Views.ViewBetRequest) on controller Masiv.WebApi.Controllers.BetController (Masiv.WebApi).
+2020-10-12 16:30:18.781 -05:00 [INF] Starting web host
+2020-10-12 16:30:19.137 -05:00 [INF] Executing ObjectResult, writing value of type 'Masiv.Model.Views.ModelResponse`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2020-10-12 16:30:19.159 -05:00 [INF] Executed action Masiv.WebApi.Controllers.BetController.CreateBet (Masiv.WebApi) in 425.3314ms
+2020-10-12 16:30:19.162 -05:00 [INF] Executed endpoint 'Masiv.WebApi.Controllers.BetController.CreateBet (Masiv.WebApi)'
+2020-10-12 16:30:19.163 -05:00 [INF] Request finished in 519.4683ms 200 application/json; charset=utf-8
+2020-10-12 17:13:25.880 -05:00 [INF] Starting web host
+2020-10-12 17:13:27.336 -05:00 [INF] Now listening on: https://localhost:5001
+2020-10-12 17:13:27.339 -05:00 [INF] Now listening on: http://localhost:5000
+2020-10-12 17:13:27.340 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-12 17:13:27.340 -05:00 [INF] Hosting environment: Development
+2020-10-12 17:13:27.340 -05:00 [INF] Content root path: F:\ProyectosPersonales\MasivTest\Masiv.WebApi
+2020-10-12 17:13:27.720 -05:00 [INF] Request starting HTTP/2 GET https://localhost:5001/  
+2020-10-12 17:13:27.758 -05:00 [INF] Request finished in 41.1849ms 404 
+2020-10-12 17:13:34.521 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:5001/api/bet/Create application/json 75
+2020-10-12 17:13:34.540 -05:00 [INF] Executing endpoint 'Masiv.WebApi.Controllers.BetController.CreateBet (Masiv.WebApi)'
+2020-10-12 17:13:34.624 -05:00 [INF] Route matched with {action = "CreateBet", controller = "Bet"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreateBet(System.String, Masiv.Model.Views.ViewBetRequest) on controller Masiv.WebApi.Controllers.BetController (Masiv.WebApi).
+2020-10-12 17:13:34.703 -05:00 [INF] Starting web host
+2020-10-12 17:13:35.187 -05:00 [INF] Executing ObjectResult, writing value of type 'Masiv.Model.Views.ModelResponse`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2020-10-12 17:13:35.217 -05:00 [INF] Executed action Masiv.WebApi.Controllers.BetController.CreateBet (Masiv.WebApi) in 587.3728ms
+2020-10-12 17:13:35.220 -05:00 [INF] Executed endpoint 'Masiv.WebApi.Controllers.BetController.CreateBet (Masiv.WebApi)'
+2020-10-12 17:13:35.220 -05:00 [INF] Request finished in 699.3744ms 200 application/json; charset=utf-8

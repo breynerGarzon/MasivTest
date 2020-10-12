@@ -5,6 +5,7 @@ using Masiv.Data.Interfaces;
 using Masiv.Model.Models;
 using Masiv.Model.Util;
 using Masiv.Model.Views;
+using Serilog;
 
 namespace Masiv.Business.Services
 {
@@ -21,9 +22,10 @@ namespace Masiv.Business.Services
             {
                 return RouletteResponse.CreationProcedureOk(this.DataServices.Create(new Roulette()).Id);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return RouletteResponse.CreationProcedureInternalError("Error al crear ruleta");
+                Log.Error(ex, "An error occurred when registering a Roulette, error:");
+                return RouletteResponse.CreationProcedureInternalError(Message.ERRORTOCREATEROULETTE);
             }
         }
 
@@ -35,9 +37,10 @@ namespace Masiv.Business.Services
                 RuletteBetResponse response = new RuletteBetResponse(bets);
                 return RouletteResponse.DisableRouletteProcedureOk(response.GetSumaryOfBets());
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return RouletteResponse.DisableRouletteProcedureInternalError("");
+                Log.Error(ex, "An error occurred when disabling the roulette, error:");
+                return RouletteResponse.DisableRouletteProcedureInternalError(Message.ERRORTODISABLEROULETTE);
             }
         }
 
@@ -49,7 +52,8 @@ namespace Masiv.Business.Services
             }
             catch (System.Exception ex)
             {
-                return RouletteResponse.EnableRouletteProcedureInternalError("");
+                Log.Error(ex, "An error occurred when enabling  the roulette, error:");
+                return RouletteResponse.EnableRouletteProcedureInternalError(Message.ERRORTOENABLEROULETTE);
             }
         }
 
@@ -59,9 +63,10 @@ namespace Masiv.Business.Services
             {
                 return RouletteResponse.GetRoulettesProcedureOk(this.DataServices.Find(new QueryFilter()));
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return RouletteResponse.GetRoulettesProcedureInternalError("");
+                Log.Error(ex, "An error occurred when consulting the roulettes, error:");
+                return RouletteResponse.GetRoulettesProcedureInternalError(Message.ERRORTOGETROULETTES);
             }
         }
     }

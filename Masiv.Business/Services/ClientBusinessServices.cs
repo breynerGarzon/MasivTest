@@ -4,6 +4,7 @@ using Masiv.Data.Interfaces;
 using Masiv.Model.Models;
 using Masiv.Model.Util;
 using Masiv.Model.Views;
+using Serilog;
 
 namespace Masiv.Business.Services
 {
@@ -20,9 +21,10 @@ namespace Masiv.Business.Services
             {
                 return ClientResponse.CreationProcedureOk(this.ClientRepository.Create(dataNewClient).ClientName);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return ClientResponse.CreationProcedureInternalError("");
+                Log.Error(ex, "An error occurred when registering a user, error:");
+                return ClientResponse.CreationProcedureInternalError(Message.ERRORTOCREATECLIENT);
             }
         }
 
@@ -32,9 +34,10 @@ namespace Masiv.Business.Services
             {
                 return ClientResponse.GetProcedureOk(this.ClientRepository.Find(new QueryFilter()));
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return ClientResponse.GetProcedureInternalError("Error al consultar usaurios");
+                Log.Error(ex, "An error occurred when consulting the clients, error:");
+                return ClientResponse.GetProcedureInternalError(Message.ERRORTOGETCLIENT);
             }
         }
     }
