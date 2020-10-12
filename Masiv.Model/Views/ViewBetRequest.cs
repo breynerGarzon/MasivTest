@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Masiv.Data.Util;
 using Masiv.Model.Models;
 
 namespace Masiv.Model.Views
@@ -7,16 +8,16 @@ namespace Masiv.Model.Views
     public class ViewBetRequest
     {
         [Required(ErrorMessage = "El id de la ruleta debe ser suministrado")]
-        public int RuletaId { get; set; }
-        public int ClienteId { get; set; }
+        public int RouletteId { get; set; }
+        public int ClientId { get; set; }
         public DateTime Date { get; set; }
-        // [Required(ErrorMessage="El id de la ruleta debe ser suministrado")]
-        [EnumDataType(typeof(Colors))]
-        public Colors ColorApuesta { get; set; }
-        [MinLength(0, ErrorMessage = "El número mínimo permitido para las apuestas es 0")]
+        [EnumDataType(typeof(Colors), ErrorMessage = "Los valores permitidos para el colores son 1 para Rojo, 2 para Negro, si no se suministra valor la apuesta se hará por número")]
+        public Colors ColorBet { get; set; }
+        [Range(0, 36, ErrorMessage = "Los números permitidos para apuestas estan entre 0 y 36")]
         public short BetNumber { get; set; }
-        [MaxLength(1000, ErrorMessage = "El valor máximo permitido para las apuestas es de $10.000")]
+        [Range(0, 10000, ErrorMessage = "El valor máximo permitido para las apuestas es de $10.000")]
         public decimal BetAmount { get; set; }
+        public string Message { get; set; }
 
         public ViewBetRequest()
         {

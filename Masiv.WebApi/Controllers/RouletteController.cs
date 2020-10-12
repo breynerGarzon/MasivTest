@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Masiv.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller")]
+    [Route("api/[controller]")]
     public class RouletteController : ControllerBase
     {
         private readonly IRouletteBusinessServices RouletteServices;

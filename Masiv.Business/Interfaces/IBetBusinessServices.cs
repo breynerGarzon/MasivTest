@@ -1,7 +1,9 @@
+using Masiv.Model.Views;
+
 namespace Masiv.Business.Interfaces
 {
     public interface IBetBusinessServices
     {
-        void CreateBet();
+        ModelResponse<string> CreateBet(ViewBetRequest newBet, string clientId);
     }
 }

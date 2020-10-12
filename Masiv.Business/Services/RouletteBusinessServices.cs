@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Masiv.Business.Business;
 using Masiv.Business.Interfaces;
 using Masiv.Data.Interfaces;
 using Masiv.Model.Models;
@@ -26,11 +27,13 @@ namespace Masiv.Business.Services
             }
         }
 
-        public ModelResponse<ViewRouletteBets> DisableRoulette(int rouletteId)
+        public ModelResponse<BettingSummary> DisableRoulette(int rouletteId)
         {
             try
             {
-                return RouletteResponse.DisableRouletteProcedureOk(this.DataServices.DisableRoulette(rouletteId));
+                IEnumerable<RouletteBets> bets = this.DataServices.DisableRoulette(rouletteId);
+                RuletteBetResponse response = new RuletteBetResponse(bets);
+                return RouletteResponse.DisableRouletteProcedureOk(response.GetSumaryOfBets());
             }
             catch (System.Exception)
             {
@@ -44,7 +47,7 @@ namespace Masiv.Business.Services
             {
                 return RouletteResponse.EnableRouletteProcedureOk(this.DataServices.EnableRoulette(rouletteId));
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
                 return RouletteResponse.EnableRouletteProcedureInternalError("");
             }

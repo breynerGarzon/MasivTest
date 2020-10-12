@@ -8,7 +8,7 @@ namespace Masiv.Business.Interfaces
     {
         ModelResponse<int> CreateRoulette();
         ModelResponse<string> EnableRoulette(int rouletteId);
-        ModelResponse<ViewRouletteBets> DisableRoulette(int rouletteId);
+        ModelResponse<BettingSummary> DisableRoulette(int rouletteId);
         ModelResponse<Roulette> GetRoulettes();
     }
 }

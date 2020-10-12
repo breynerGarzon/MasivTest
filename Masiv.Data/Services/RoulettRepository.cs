@@ -21,7 +21,7 @@ namespace Masiv.Data.Services
         {
             using (var connection = new SqlConnection(this.AppSettingsOptions.ConnectionString))
             {
-                var orderDetails = connection.Query<Roulette>("Execute CreateRoulette");
+                var orderDetails = connection.Query<Roulette>("CreateRoulette");
                 entity.Id = orderDetails.First().Id;
 
                 return entity;
@@ -33,9 +33,17 @@ namespace Masiv.Data.Services
             throw new System.NotImplementedException();
         }
 
-        public string DisableRoulette(int rouletteId)
+        public IEnumerable<RouletteBets> DisableRoulette(int rouletteId)
         {
-            throw new System.NotImplementedException();
+            using (var connection = new SqlConnection(this.AppSettingsOptions.ConnectionString))
+            {
+                var queryParameters = new DynamicParameters();
+                queryParameters.Add("@RouletteId", rouletteId);
+                IEnumerable<RouletteBets> response = connection.Query<RouletteBets>("DisableRoulette", queryParameters, commandType: CommandType.StoredProcedure)
+                                                .ToList();
+
+                return response;
+            }
         }
 
         public string EnableRoulette(int rouletteId)
@@ -44,7 +52,7 @@ namespace Masiv.Data.Services
             {
                 var queryParameters = new DynamicParameters();
                 queryParameters.Add("@RouletteId", rouletteId);
-                string message = connection.Query<string>("Execute EnableRoulette", queryParameters, commandType: CommandType.StoredProcedure)
+                string message = connection.Query<string>("EnableRoulette", queryParameters, commandType: CommandType.StoredProcedure)
                                                 .ToList()
                                                 .First();
 
@@ -55,7 +63,7 @@ namespace Masiv.Data.Services
         {
             using (var connection = new SqlConnection(this.AppSettingsOptions.ConnectionString))
             {
-                return connection.Query<Roulette>("Execute GetRoulettes").ToList();
+                return connection.Query<Roulette>("GetRoulettes").ToList();
             }
         }
 
