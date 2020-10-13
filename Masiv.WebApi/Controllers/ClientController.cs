@@ -27,7 +27,7 @@ namespace Masiv.WebApi.Controllers
         [HttpPost("Delete")]
         public IActionResult DeleteClient() { return Ok(); }
 
-        [HttpPost("Clients")]
+        [HttpGet("Clients")]
         public IActionResult GetClient()
         {
             return Ok(ClientServies.GetClients());
